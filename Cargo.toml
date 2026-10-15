@@ -1,0 +1,24 @@
+[package]
+name = "ccl"
+version = "0.1.0"
+edition = "2021"
+description = "Cross-platform app uninstaller, leftovers finder and cache cleaner"
+
+[dependencies]
+eframe = "0.37"
+trash = "5"
+walkdir = "2"
+dirs = "7"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+image = { version = "0.25", default-features = false, features = ["png"] }
+
+[target.'cfg(target_os = "macos")'.dependencies]
+plist = "1.10"
+
+[target.'cfg(windows)'.dependencies]
+winreg = "0.56"
+
+[profile.release]
+opt-level = 3
+strip = true
